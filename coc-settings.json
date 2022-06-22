@@ -3,22 +3,32 @@
 "diagnostic.checkCurrentLine": true,
 "diagnostic.virtualText": true,
 "diagnostic.virtualTextCurrentLineOnly": false,
-"diagnostic.showUnused": false,
+"diagnostic.showUnused": false
+
 
 //"sumneko-lua.enableNvimLuaDev": true,
-"languageserver": {
-  "ccls": {
-    "command": "ccls",
-    "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
-    "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
-    "initializationOptions": {
-        "cache": {
-          "directory": "/tmp/ccls"
-        }
-      }
-  }
+
+
+//Only use this setting if using coc-ccls(For C,C++)
+//I upgraded to coc-clangd
+
+
+//"languageserver": {
+//  "ccls": {
+//    "command": "ccls",
+//    "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+//    "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+//    "initializationOptions": {
+//        "cache": {
+//          "directory": "/tmp/ccls"
+//        }
+//      }
+//  }
+//}
+
+
 }
-}
+
 
 
 
