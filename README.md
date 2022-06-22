@@ -73,12 +73,14 @@ Make sure to get into nvim once the this configuration is installed and start in
 
 The package installer used is *Packer*. All the user needs to do once in nvim is to type the following command.
 
-In my case for Arch Linux.
+
+In my case for **Arch Linux**.
 
 ```git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim```
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim 
+ ```
 
-Then in nvim.
+Then in **nvim**.
  
 ```:PackerInstall```
 
