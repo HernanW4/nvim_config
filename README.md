@@ -1,9 +1,13 @@
 # Nvim Config Files
 
-
 This repo is a workspace to store, and update my personal nvim configuration. 
 
 ![Neovim Home](resources/neovim_home.png)
+
+**Important to know, I have recently change my configuration system from using init.vim to the lua system**
+
+The *init.vim* configuration I have used came from *https://github.com/jonhoo*. I have modified this file along the way to comply with my preferences. The same thing was done with the **lua** system, I have used other people's configuration and just modified it so it can fit my preferences along with just translating the *init.vim* I already had, to the **lua** syntax. 
+
 
 ## Terminal and Shell Configuration
 I personally use **Fish** as my default shell and **Alacritty** as my terminal. The configuration for both will be updated soon. 
