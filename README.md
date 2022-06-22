@@ -73,7 +73,16 @@ Make sure to get into nvim once the this configuration is installed and start in
 
 The package installer used is *Packer*. All the user needs to do once in nvim is to type the following command.
 
+In my case for Arch Linux.
+
+```git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim```
+
+Then in nvim.
+ 
 ```:PackerInstall```
+
+For more information please visit https://github.com/wbthomason/packer.nvim. 
 
 Which will install all the required packages such as **Coc**. Coc is the package used in order to install extensions and tools to help code specific type of files. In my case in a Rust fanatic, so I used Coc to install *rust-analyzer* then configured the *coc-settings.json* to configure the way to handle errors and warning messages. This means that *coc-settings.json* is not required to have when using this config. Just keep in mind that there are files that use some of Coc commands which may later cause errors. 
 
