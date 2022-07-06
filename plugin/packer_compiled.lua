@@ -166,7 +166,7 @@ _G.packer_plugins = {
     url = "https://github.com/rose-pine/neovim"
   },
   ["tabline.nvim"] = {
-    config = { "\27LJ\2\n�\3\0\0\5\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\5\0005\4\4\0=\4\6\0035\4\a\0=\4\b\3=\3\t\2B\0\2\0016\0\n\0009\0\v\0'\2\f\0B\0\2\1K\0\1\0�\1      set guioptions-=e \" Use showtabline in gui vim\n      set sessionoptions+=tabpages,globals \" store tabpages and globals in session\n    \bcmd\bvim\foptions\25component_separators\1\3\0\0\b\b\23section_separators\1\0\b\18modified_icon\a+ \23show_filename_only\2\15show_bufnr\1\18show_devicons\2\21show_tabs_always\1\27max_bufferline_percent\3B\19show_tabs_only\1\20modified_italic\1\1\3\0\0\b\b\1\0\1\venable\2\nsetup\ftabline\frequire\0" },
+    config = { "\27LJ\2\n�\3\0\0\5\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\5\0005\4\4\0=\4\6\0035\4\a\0=\4\b\3=\3\t\2B\0\2\0016\0\n\0009\0\v\0'\2\f\0B\0\2\1K\0\1\0�\1      set guioptions-=e \" Use showtabline in gui vim\n      set sessionoptions+=tabpages,globals \" store tabpages and globals in session\n    \bcmd\bvim\foptions\25component_separators\1\3\0\0\b\b\23section_separators\1\0\b\21show_tabs_always\1\27max_bufferline_percent\3B\19show_tabs_only\1\20modified_italic\1\18modified_icon\a+ \23show_filename_only\2\15show_bufnr\1\18show_devicons\2\1\3\0\0\b\b\1\0\1\venable\2\nsetup\ftabline\frequire\0" },
     loaded = true,
     path = "/home/walter/.local/share/nvim/site/pack/packer/start/tabline.nvim",
     url = "https://github.com/kdheepak/tabline.nvim"
@@ -179,14 +179,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: tabline.nvim
-time([[Config for tabline.nvim]], true)
-try_loadstring("\27LJ\2\n�\3\0\0\5\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\5\0005\4\4\0=\4\6\0035\4\a\0=\4\b\3=\3\t\2B\0\2\0016\0\n\0009\0\v\0'\2\f\0B\0\2\1K\0\1\0�\1      set guioptions-=e \" Use showtabline in gui vim\n      set sessionoptions+=tabpages,globals \" store tabpages and globals in session\n    \bcmd\bvim\foptions\25component_separators\1\3\0\0\b\b\23section_separators\1\0\b\18modified_icon\a+ \23show_filename_only\2\15show_bufnr\1\18show_devicons\2\21show_tabs_always\1\27max_bufferline_percent\3B\19show_tabs_only\1\20modified_italic\1\1\3\0\0\b\b\1\0\1\venable\2\nsetup\ftabline\frequire\0", "config", "tabline.nvim")
-time([[Config for tabline.nvim]], false)
 -- Config for: gitsigns.nvim
 time([[Config for gitsigns.nvim]], true)
 try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
 time([[Config for gitsigns.nvim]], false)
+-- Config for: tabline.nvim
+time([[Config for tabline.nvim]], true)
+try_loadstring("\27LJ\2\n�\3\0\0\5\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\5\0005\4\4\0=\4\6\0035\4\a\0=\4\b\3=\3\t\2B\0\2\0016\0\n\0009\0\v\0'\2\f\0B\0\2\1K\0\1\0�\1      set guioptions-=e \" Use showtabline in gui vim\n      set sessionoptions+=tabpages,globals \" store tabpages and globals in session\n    \bcmd\bvim\foptions\25component_separators\1\3\0\0\b\b\23section_separators\1\0\b\21show_tabs_always\1\27max_bufferline_percent\3B\19show_tabs_only\1\20modified_italic\1\18modified_icon\a+ \23show_filename_only\2\15show_bufnr\1\18show_devicons\2\1\3\0\0\b\b\1\0\1\venable\2\nsetup\ftabline\frequire\0", "config", "tabline.nvim")
+time([[Config for tabline.nvim]], false)
 if should_profile then save_profiles() end
 
 end)
