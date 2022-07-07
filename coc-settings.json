@@ -9,7 +9,7 @@
 "diagnostic.errorSign": "••",
 "diagnostic.warningSign": "•",
 "diagnostic.infoSign": "•",
-"diagnostic.level": "information",
+"diagnostic.hintSign": "•",
 
 "rust-analyzer.inlayHints.chainingHints.enable": false,
 
