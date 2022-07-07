@@ -31,6 +31,13 @@ end
 vim.opt.background = 'dark'
 vim.cmd([[colorscheme gruvbox]])
 
+
+--CoC Message Highlight
+vim.cmd("highlight CocErrorVirtualText guibg=#00 guifg=#ff0000")
+vim.cmd("highlight CocWarningVirtualText guibg=#00 guifg=#FFA500")
+vim.cmd("highlight CocHintVirtualText guibg=#00 guifg=#20f6cb")
+vim.cmd("highlight CocRustTypeHint guibg=#00 guifg=#808080")
+
 -- statusline color schemes:
 -- import with: require('colors').colorscheme_name
 local M = {}
