@@ -5,6 +5,7 @@
 "diagnostic.virtualTextCurrentLineOnly": false,
 "diagnostic.showUnused": false,
 "diagnostic.enableMessage": "never",
+"diagnostic.messageLevel":"information",
 
 "diagnostic.errorSign": "••",
 "diagnostic.warningSign": "•",
