@@ -157,20 +157,27 @@ ins_left {
 }
 
 ins_left {
-  -- filesize component
-  'filesize',
-  cond = conditions.buffer_not_empty,
+  'branch',
+  icon = '',
+  color = { fg = colors.white, gui = 'bold' },
 }
+ins_left {
+  function()
+    return ''
+  end,
+  color = { fg = colors.blue }, -- Sets highlighting of component
+  padding = { left = 0, right = 1 }, -- We don't need space before this
+}
+
+
 
 ins_left {
   'filename',
   cond = conditions.buffer_not_empty,
-  color = { fg = colors.magenta, gui = 'bold' },
+  color = { fg = colors.green, gui = 'bold' },
 }
 
-ins_left { 'location' }
 
-ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
 
 ins_left {
   'diagnostics',
@@ -178,7 +185,7 @@ ins_left {
   symbols = { error = ' ', warn = ' ', info = ' ' },
   diagnostics_color = {
     color_error = { fg = colors.red },
-    color_warn = { fg = colors.yellow },
+    color_warn = { fg = colors.orange },
     color_info = { fg = colors.cyan },
   },
 }
@@ -190,47 +197,28 @@ ins_left {
     return '%='
   end,
 }
-
-ins_left {
-  -- Lsp server name .
-  function()
-    local msg = 'No Active Lsp'
-    local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-    local clients = vim.lsp.get_active_clients()
-    if next(clients) == nil then
-      return msg
-    end
-    for _, client in ipairs(clients) do
-      local filetypes = client.config.filetypes
-      if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-        return client.name
-      end
-    end
-    return msg
-  end,
-  icon = ' LSP:',
-  color = { fg = '#ffffff', gui = 'bold' },
-}
-
 -- Add components to right sections
 ins_right {
   'o:encoding', -- option component same as &encoding in viml
-  fmt = string.upper, -- I'm not sure why it's upper case either ;)
   cond = conditions.hide_in_width,
-  color = { fg = colors.green, gui = 'bold' },
+  color = { fg = colors.yellow, gui = 'bold' },
 }
 
 ins_right {
   'fileformat',
   fmt = string.upper,
-  icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-  color = { fg = colors.green, gui = 'bold' },
+  icons_enabled = true, -- I think icons are cool but Eviline doesn't have them. sigh
+  color = { fg = colors.yellow, gui = 'bold' },
 }
 
+
+
 ins_right {
-  'branch',
-  icon = '',
-  color = { fg = colors.violet, gui = 'bold' },
+  function()
+    return ''
+  end,
+  color = { fg = colors.blue }, -- Sets highlighting of component
+  padding = { left = 0, right = 1 }, -- We don't need space before this
 }
 
 ins_right {
@@ -238,7 +226,7 @@ ins_right {
   -- Is it me or the symbol for modified us really weird
   symbols = { added = ' ', modified = '柳 ', removed = ' ' },
   diff_color = {
-    added = { fg = colors.green },
+    added = { fg = colors.blue },
     modified = { fg = colors.orange },
     removed = { fg = colors.red },
   },
@@ -247,12 +235,24 @@ ins_right {
 
 ins_right {
   function()
+    return ''
+  end,
+  color = { fg = colors.blue }, -- Sets highlighting of component
+  padding = { left = 0, right = 1 }, -- We don't need space before this
+}
+
+
+ins_right { 'progress', color = { fg = colors.fg, gui = 'bold' } }
+
+ins_right {
+  function()
     return '▊'
   end,
-  color = { fg = colors.blue },
+  color = { fg = colors.green },
   padding = { left = 1 },
 }
 
+ins_right { 'location' }
 -- Now don't forget to initialize lualine
 lualine.setup(config)
 

@@ -1,6 +1,6 @@
-local function OpenDiagnostics()
-    vim.lsp.diagnostic.set_loclist()
-end
+--local function OpenDiagnostics()
+--    vim.lsp.diagnostic.set_loclist()
+--end
 
 require('plugins')
 

@@ -11,11 +11,8 @@
 --vim.opt.background = 'dark'
 --vim.cmd([[colorscheme gruvbox]])
 
-local status_ok, color_scheme = pcall(require, 'gruvbox')
-if not status_ok then
-  return
-end
 
+vim.opt.termguicolors = true
 -- Note: The instruction to load the color scheme may vary.
 -- See the README of the selected color scheme for the instruction
 -- to use.
@@ -28,8 +25,14 @@ end
 --}
 --require('onedark').load()
 
-vim.g.sonokai_style = 'default'
-vim.g.sonokai_better_performace = 1
+-- Lua
+require("lsp-colors").setup({
+  Error = "#FF0000",
+  Warning = "#e0af68",
+  Information = "#0db9d7",
+  Hint = "#10B981"
+})
+vim.g.sonokai_diagnostic_virtual_text ='colored'
 vim.cmd([[colorscheme sonokai]])
 
 

@@ -69,7 +69,8 @@ use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-de
   use 'tanvirtin/monokai.nvim'
   use { 'rose-pine/neovim', as = 'rose-pine' }
   use { "ellisonleao/gruvbox.nvim" }
-
+use 'folke/lsp-colors.nvim'
+use 'eddyekofo94/gruvbox-flat.nvim'
 
   -- Coc
 
