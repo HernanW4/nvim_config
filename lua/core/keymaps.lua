@@ -44,6 +44,7 @@ map('', '<right>', '<nop>')
 map('', '<left>', ':tabp<CR>')
 map('', '<right>', ':tabn<CR>')
 
+--Tabline
 -- Map Esc to kk
 map('i', 'kk', '<Esc>')
 
@@ -95,15 +96,15 @@ map('n', '<leader>n', ':NvimTreeFindFile<CR>')      -- search file
 map('n', '<leader>z', ':TagbarToggle<CR>')          -- open/close
 
 
--- Coc Keymaps
-map('n', '[g', ':coc-diagnostics-prev')
-map('n', ']g', ':coc-diagnostics-next')
-
-
-map('n', 'gd', '<Plug>(coc-definition)')
-map('n', 'gy', '<Plug>(coc-type-definition)')
-map('n', 'gi', '<Plug>(coc-implementation)')
-map('n', 'gr', '<Plug>(coc-references)')
+---- Coc Keymaps
+--map('n', '[g', ':coc-diagnostics-prev')
+--map('n', ']g', ':coc-diagnostics-next')
+--
+--
+--map('n', 'gd', '<Plug>(coc-definition)')
+--map('n', 'gy', '<Plug>(coc-type-definition)')
+--map('n', 'gi', '<Plug>(coc-implementation)')
+--map('n', 'gr', '<Plug>(coc-references)')
 
 
 --Reload lua config

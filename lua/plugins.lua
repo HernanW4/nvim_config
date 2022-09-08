@@ -19,12 +19,17 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  --Lightline
-  use {
+  --StatusLine
+
+use {
   'nvim-lualine/lualine.nvim',
-  requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
 }
 
+
+--Devicons
+use 'kyazdani42/nvim-web-devicons'
+use 'ryanoasis/vim-devicons'
 --Autocomplete pairs
 use {
 	"windwp/nvim-autopairs",
@@ -32,19 +37,20 @@ use {
 }
 
 --Tabline
-use({
-    'crispgm/nvim-tabline',
-    config = function()
-        require('tabline').setup({})
-    end,
-})
-
 --use { 'alvarosevilla95/luatab.nvim', requires='kyazdani42/nvim-web-devicons' }
+--use {
+--  'romgrk/barbar.nvim',
+--  requires = {'kyazdani42/nvim-web-devicons'}
+--}
+--use 'bagrat/vim-buffet'
 
+-- using packer.nvim
+use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
 
 --LSP config
---
   use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
+  use 'kabouzeid/nvim-lspinstall'
+--
     
 
 -- Rust fmt
@@ -58,6 +64,7 @@ use({
   use 'nvim-treesitter/nvim-treesitter'
 
 -- Color schemes
+ use 'sainnhe/sonokai'
   use 'joshdick/onedark.vim'
   use 'tanvirtin/monokai.nvim'
   use { 'rose-pine/neovim', as = 'rose-pine' }
@@ -65,7 +72,6 @@ use({
 
 
   -- Coc
-  use {'neoclide/coc.nvim', branch = 'release'}
 
   -- Autocomplete
   use {
