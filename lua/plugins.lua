@@ -52,6 +52,11 @@ return require('packer').startup(function(use)
   requires = { 'kyazdani42/nvim-web-devicons', opt = true }
 }
 
+    --alpha-nvim
+    use {
+    'goolord/alpha-nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' },
+}
     -- Rust
     use 'simrat39/rust-tools.nvim'
 

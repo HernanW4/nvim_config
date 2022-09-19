@@ -12,5 +12,6 @@ require('nvimTree')
 require('colorscheme')
 require('statusline')
 require('barbar')
+require('start_menu')
 
 
