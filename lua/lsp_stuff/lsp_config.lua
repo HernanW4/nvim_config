@@ -54,14 +54,16 @@ for _, lsp in pairs(ensured_servers) do
     capabilities = require('lsp_stuff.handlers').capabilities,
 
   }
-  if server == "rust_analyzer" then
+  if lsp == "rust_analyzer" then
     local rust_opts = require("lsp_stuff.server_settings.rust")
     local rust_tools_status_ok, rust_tools = pcall(require, "rust-tools")
     if not rust_tools_status_ok then
         return
     end
-    rust_tools.setup()
+
+    require("rust-tools").setup(rust_opts)
     goto continue
+
   end
   lspconfig[lsp].setup(opts)::continue::
 end
