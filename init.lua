@@ -11,5 +11,6 @@ require('keymaps')
 require('nvimTree')
 require('colorscheme')
 require('statusline')
+require('barbar')
 
 

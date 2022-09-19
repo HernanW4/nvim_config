@@ -41,8 +41,8 @@ map('', '<right>', '<nop>')
 
 
 -- tab Navigation
-map('', '<left>', ':tabp<CR>')
-map('', '<right>', ':tabn<CR>')
+--map('', '<left>', ':tabp<CR>')
+--map('', '<right>', ':tabn<CR>')
 
 --Tabline
 -- Map Esc to kk

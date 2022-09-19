@@ -55,6 +55,13 @@ return require('packer').startup(function(use)
     -- Rust
     use 'simrat39/rust-tools.nvim'
 
+    --Tabline
+use {
+  'romgrk/barbar.nvim',
+  requires = {'kyazdani42/nvim-web-devicons'}
+}
+
+
    if packer_bootstrap then
     require('packer').sync()
   end
