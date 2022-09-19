@@ -44,8 +44,14 @@ return require('packer').startup(function(use)
         'kyazdani42/nvim-web-devicons', -- optional, for file icons
       },
       tag = 'nightly' -- optional, updated every week. (see issue #1193)
+  }
 
-}
+    --TreeSitter
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
+
     --Statusline
     use {
   'nvim-lualine/lualine.nvim',
