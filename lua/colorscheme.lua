@@ -8,13 +8,15 @@
 -- Change the "require" values with your color scheme
 -- Available color schemes: onedark, monokai, rose-pine
 
---vim.opt.background = 'dark'
---vim.cmd([[colorscheme gruvbox]])
+vim.opt.background = 'dark'
+vim.cmd([[colorscheme gruvbox]])
 
 local status_ok, color_scheme = pcall(require, 'gruvbox')
 if not status_ok then
   return
 end
+
+
 
 -- Note: The instruction to load the color scheme may vary.
 -- See the README of the selected color scheme for the instruction
@@ -28,16 +30,8 @@ end
 --}
 --require('onedark').load()
 
-vim.opt.background = 'dark'
-vim.cmd([[colorscheme gruvbox]])
-
 
 --CoC Message Highlight
-vim.cmd("highlight CocErrorVirtualText guibg=#00 guifg=#ff0000")
-vim.cmd("highlight CocWarningVirtualText guibg=#00 guifg=#FFA500")
-vim.cmd("highlight CocHintVirtualText guibg=#00 guifg=#20f6cb")
-vim.cmd("highlight CocRustTypeHint guibg=#00 guifg=#808080")
-
 -- statusline color schemes:
 -- import with: require('colors').colorscheme_name
 local M = {}

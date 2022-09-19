@@ -14,51 +14,46 @@ vim.cmd [[
 ]]
 
 return require('packer').startup(function(use)
-	use 'wbthomason/packer.nvim'
+  -- Packer can manage itself
+  use 'wbthomason/packer.nvim'
 
-    --LSP 
+  use 'morhetz/gruvbox' --Gruvbox
+
+  --Lsp 
+  use 'neovim/nvim-lspconfig'
+  use { "williamboman/mason.nvim" }
+  use "williamboman/mason-lspconfig.nvim"
+
+
+  --nvim-cmp
+   use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/nvim-cmp'
+  --
+  use 'L3MON4D3/LuaSnip'
+    use'saadparwaiz1/cmp_luasnip'
+
+  -- Nvim-tree
     use {
-    "williamboman/nvim-lsp-installer",
-    "neovim/nvim-lspconfig",
-}
+      'kyazdani42/nvim-tree.lua',
+      requires = {
+        'kyazdani42/nvim-web-devicons', -- optional, for file icons
+      },
+      tag = 'nightly' -- optional, updated every week. (see issue #1193)
 
-    --Tree 
+}
+    --Statusline
     use {
-  'kyazdani42/nvim-tree.lua',
-  requires = {
-    'kyazdani42/nvim-web-devicons', -- optional, for file icons
-  },
-  tag = 'nightly' -- optional, updated every week. (see issue #1193)
-}
-
-    --TreeSitter
-    use 'nvim-treesitter/nvim-treesitter'
-
-    --rust
-    use 'simrat39/rust-tools.nvim'
-
-    --nvim-cmp
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/cmp-cmdline'
-    use 'hrsh7th/nvim-cmp'
-    
-    use 'L3MON4D3/LuaSnip'
- use'saadparwaiz1/cmp_luasnip'
-
-	--StatusLine
-	use {
   'nvim-lualine/lualine.nvim',
   requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-  }
-    
+}
 
-  --Colorscheme
-  use { "ellisonleao/gruvbox.nvim" }
+    -- Rust
+    use 'simrat39/rust-tools.nvim'
 
-if packer_bootstrap then
+   if packer_bootstrap then
     require('packer').sync()
   end
 end)
-

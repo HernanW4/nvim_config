@@ -110,5 +110,3 @@ map('n', '<leader>z', ':TagbarToggle<CR>')          -- open/close
 --Reload lua config
 map("n", "<leader>r", "<cmd>lua reload_nvim_conf()<CR>", { noremap = true, silent = false })
 
-
-
