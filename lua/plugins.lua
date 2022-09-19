@@ -19,6 +19,8 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+--C
+use 'm-pilia/vim-ccls'
   --StatusLine
 
 use {
@@ -49,13 +51,17 @@ use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-de
 
 --LSP config
   use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
-  use 'kabouzeid/nvim-lspinstall'
 --
     
 
--- Rust fmt
+-- Rust config
     --use 'rust-lang/rust.vim'
     use 'alx741/vim-rustfmt'
+    use 'simrat39/rust-tools.nvim'
+    
+    -- Debugging
+    use 'nvim-lua/plenary.nvim'
+    use 'mfussenegger/nvim-dap'
 
   -- File explorer
   use 'kyazdani42/nvim-tree.lua'
