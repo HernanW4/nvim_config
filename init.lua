@@ -1,14 +1,15 @@
+vim.opt.shell = '/bin/bash'
+
 require('plugins')
 
-require('core/keymaps')
-require('core/reload')
-require('core/colorscheme')
-require('core/options')
-require('core/rust')
-require('core/statusline')
+require('lsp_stuff')
 
-require('plugins_config/nvim-cmp')
-require('plugins_config/nvim-treesitter')
-require('plugins_config/nvim-tree')
-require('plugins_config/alpha-nvim')
+
+require('options')
+require('nvim_cmp')
+require('keymaps')
+require('nvimTree')
+require('colorscheme')
+require('statusline')
+
 

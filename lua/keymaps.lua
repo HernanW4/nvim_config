@@ -1,6 +1,16 @@
------------------------------------------------------------
 -- Define keymaps of Neovim and installed plugins.
 -----------------------------------------------------------
+
+function _G.reload_nvim_conf()
+  for name,_ in pairs(package.loaded) do
+    if name:match('^core') or name:match('^lsp') or name:match('^plugins') then
+      package.loaded[name] = nil
+    end
+  end
+
+  dofile(vim.env.MYVIMRC)
+  vim.notify("Nvim configuration reloaded!", vim.log.levels.INFO)
+end
 
 
 local function map(mode, lhs, rhs, opts)
@@ -9,16 +19,7 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- Function to show the documentation using Coc-doHover
-function show_documentation() local filetype = vim.bo.filetype
 
-   if filetype == 'vim'  or filetype == 'help' then
-        vim.api.nvim_command('h ' .. filetype)
-
-   elseif vim.fn['coc#rpc#ready']() then
-     vim.fn.CocActionAsync('doHover')
-   end
-end
 -- Change leader to a comma
 map('n', '<space>', '<nop>', {noremap = true})
 
@@ -39,11 +40,11 @@ map('i', '<left>', '<nop>')
 map('', '<right>', '<nop>')
 
 
-
 -- tab Navigation
 map('', '<left>', ':tabp<CR>')
 map('', '<right>', ':tabn<CR>')
 
+--Tabline
 -- Map Esc to kk
 map('i', 'kk', '<Esc>')
 
@@ -95,29 +96,17 @@ map('n', '<leader>n', ':NvimTreeFindFile<CR>')      -- search file
 map('n', '<leader>z', ':TagbarToggle<CR>')          -- open/close
 
 
--- Coc Keymaps
-map('n', '[g', ':coc-diagnostics-prev')
-map('n', ']g', ':coc-diagnostics-next')
-
-
-map('n', 'gd', '<Plug>(coc-definition)')
-map('n', 'gy', '<Plug>(coc-type-definition)')
-map('n', 'gi', '<Plug>(coc-implementation)')
-map('n', 'gr', '<Plug>(coc-references)')
+---- Coc Keymaps
+--map('n', '[g', ':coc-diagnostics-prev')
+--map('n', ']g', ':coc-diagnostics-next')
+--
+--
+--map('n', 'gd', '<Plug>(coc-definition)')
+--map('n', 'gy', '<Plug>(coc-type-definition)')
+--map('n', 'gi', '<Plug>(coc-implementation)')
+--map('n', 'gr', '<Plug>(coc-references)')
 
 
 --Reload lua config
-map("n", "<leader>r", "<cmd>lua ReloadConfig()<CR>", { noremap = true, silent = false })
+map("n", "<leader>r", "<cmd>lua reload_nvim_conf()<CR>", { noremap = true, silent = false })
 
-
-map('n', 'K', ':lua show_documentation()<CR>')
-
-
-
-
---vim.api.nvim_set_keymap(
---	'n',
---	'K',
---	':lua show_documentation()<CR>',
---	{ noremap = false, silent = false }
---);
