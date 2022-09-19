@@ -48,12 +48,26 @@ mason_lspconfig.setup{
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 local opts = {}
-for _, lsp in pairs(ensured_servers) do
+for _, lsp in ipairs(ensured_servers) do
   opts = {
     on_attach = require('lsp_stuff.handlers').on_attach,
     capabilities = require('lsp_stuff.handlers').capabilities,
 
   }
+  if lsp == "sumneko_lua" then
+      local l_status_ok, lua_dev = pcall(require, "lua-dev")
+      if not l_status_ok then
+          return
+      end
+
+      local luadev = lua_dev.setup{
+      lspconfig = {
+          on_attach = opts.on_attach,
+          capabilities = opts.capabilities,
+      },
+  }
+  lspconfig.sumneko_lua.setup(luadev)
+  end
   if lsp == "rust_analyzer" then
     local rust_opts = require("lsp_stuff.server_settings.rust")
     local rust_tools_status_ok, rust_tools = pcall(require, "rust-tools")
@@ -61,9 +75,10 @@ for _, lsp in pairs(ensured_servers) do
         return
     end
 
-    require("rust-tools").setup(rust_opts)
+    rust_tools.setup(rust_opts)
     goto continue
 
   end
-  lspconfig[lsp].setup(opts)::continue::
+  lspconfig[lsp].setup(opts)
+  ::continue::
 end

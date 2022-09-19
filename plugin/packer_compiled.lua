@@ -109,6 +109,11 @@ _G.packer_plugins = {
     path = "/home/walter-arch/.local/share/nvim/site/pack/packer/start/gruvbox",
     url = "https://github.com/morhetz/gruvbox"
   },
+  ["lua-dev.nvim"] = {
+    loaded = true,
+    path = "/home/walter-arch/.local/share/nvim/site/pack/packer/start/lua-dev.nvim",
+    url = "https://github.com/folke/lua-dev.nvim"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/home/walter-arch/.local/share/nvim/site/pack/packer/start/lualine.nvim",
