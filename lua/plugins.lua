@@ -37,6 +37,8 @@ return require('packer').startup(function(use)
   use 'L3MON4D3/LuaSnip'
     use'saadparwaiz1/cmp_luasnip'
 
+--Matching braces
+use 'tmsvg/pear-tree'
   -- Nvim-tree
     use {
       'kyazdani42/nvim-tree.lua',
