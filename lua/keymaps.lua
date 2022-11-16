@@ -1,4 +1,3 @@
------------------------------------------------------------
 -- Define keymaps of Neovim and installed plugins.
 -----------------------------------------------------------
 
@@ -20,16 +19,7 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- Function to show the documentation using Coc-doHover
-function show_documentation() local filetype = vim.bo.filetype
 
-   if filetype == 'vim'  or filetype == 'help' then
-        vim.api.nvim_command('h ' .. filetype)
-
-   elseif vim.fn['coc#rpc#ready']() then
-     vim.fn.CocActionAsync('doHover')
-   end
-end
 -- Change leader to a comma
 map('n', '<space>', '<nop>', {noremap = true})
 
@@ -50,10 +40,9 @@ map('i', '<left>', '<nop>')
 map('', '<right>', '<nop>')
 
 
-
 -- tab Navigation
-map('', '<left>', ':tabp<CR>')
-map('', '<right>', ':tabn<CR>')
+--map('', '<left>', ':tabp<CR>')
+--map('', '<right>', ':tabn<CR>')
 
 --Tabline
 -- Map Esc to kk
@@ -121,15 +110,3 @@ map('n', '<leader>z', ':TagbarToggle<CR>')          -- open/close
 --Reload lua config
 map("n", "<leader>r", "<cmd>lua reload_nvim_conf()<CR>", { noremap = true, silent = false })
 
-
-map('n', 'K', ':lua show_documentation()<CR>')
-
-
-
-
---vim.api.nvim_set_keymap(
---	'n',
---	'K',
---	':lua show_documentation()<CR>',
---	{ noremap = false, silent = false }
---);

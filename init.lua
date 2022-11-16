@@ -1,22 +1,18 @@
---local function OpenDiagnostics()
---    vim.lsp.diagnostic.set_loclist()
---end
+vim.opt.shell = '/bin/bash'
 
 require('plugins')
-require('core/keymaps')
-require('core/reload')
-require('core/colorscheme')
-require('core/options')
-require('core/rust')
-require('core/statusline')
-require('core/tabline')
+
+require('lsp_stuff')
 
 
-require('plugins_config/nvim-treesitter')
-require('plugins_config/nvim-tree')
---require('plugins_config/alpha-nvim')
-require('lsp_config/lsp_setup')
-require('lsp_config/nvim_cmp')
+require('options')
+require('nvim_cmp')
+require('keymaps')
+require('nvimTree')
+require('colorscheme')
+require('statusline')
+require('barbar')
+require('start_menu')
 
 
 
