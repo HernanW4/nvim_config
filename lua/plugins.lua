@@ -19,7 +19,10 @@ return require('packer').startup(function(use)
 
 use 'kamykn/popup-menu.nvim'
 
-use {'iamcco/markdown-preview.nvim'}
+-- Mark down
+-- install without yarn or npm
+
+use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
 --Color theme
 use 'Mofiqul/dracula.nvim'
