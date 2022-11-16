@@ -76,7 +76,8 @@ map('n', '<leader>n', ':NvimTreeFindFile<CR>')      -- search file
 map('n', '<leader>z', ':TagbarToggle<CR>')          -- open/close
 
 
---map('n', '<C-s>', ':MarkdownPreview')
+map('n', '<C-m>', '<Plug>MarkdownPreview')
+map('n', '<C-s>', '<Plug>MarkdownPreviewStop')
 --nmap <M-s> <Plug>MarkdownPreviewStop
 --nmap <C-p> <Plug>MarkdownPreviewToggle
 
