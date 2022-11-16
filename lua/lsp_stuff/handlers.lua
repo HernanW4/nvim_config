@@ -7,7 +7,7 @@ if not status_cmp_ok then
   return
 end
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
-M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
+M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
 
 M.setup = function()
   local icons = require "user.icons"
@@ -116,7 +116,6 @@ M.on_attach = function(client, bufnr)
   if client.name == "tsserver" then
     require("lsp-inlayhints").on_attach(client, bufnr)
   end
-
   if client.name == "jdt.ls" then
     vim.lsp.codelens.refresh()
     if JAVA_DAP_ACTIVE then

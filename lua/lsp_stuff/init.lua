@@ -1,2 +1,1 @@
-require('lsp_stuff.lsp_config')
-
+require 'lsp_stuff.lsp_config'

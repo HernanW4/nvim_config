@@ -68,17 +68,16 @@ for _, lsp in ipairs(ensured_servers) do
   }
   lspconfig.sumneko_lua.setup(luadev)
   end
+
   if lsp == "rust_analyzer" then
-    local rust_opts = require("lsp_stuff.server_settings.rust")
-    local rust_tools_status_ok, rust_tools = pcall(require, "rust-tools")
-    if not rust_tools_status_ok then
-        return
-    end
+      local rust_opts = require("lsp_stuff.servers.rust")
+      local rust_tools_status_ok, rust_tools = pcall(require, "rust-tools")
+      if not rust_tools_status_ok then return
+      end
 
-    rust_tools.setup(rust_opts)
-    goto continue
-
+      rust_tools.setup(rust_opts)
+      goto continue
   end
-  lspconfig[lsp].setup(opts)
   ::continue::
 end
+
