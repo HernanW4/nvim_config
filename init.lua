@@ -2,16 +2,15 @@ vim.opt.shell = '/bin/bash'
 
 require('plugins')
 
-require('lsp_stuff')
+require ('lsp_stuff')
 
-
-require('options')
-require('nvim_cmp')
+require('markdown')
 require('keymaps')
-require('nvimTree')
-require('colorscheme')
 require('statusline')
-require('barbar')
-require('start_menu')
-
+require('colorscheme')
+require('ntree')
+require('tabline')
+require('options')
+require('transparency')
+require('nvimCmp')
 

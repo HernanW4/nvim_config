@@ -221,4 +221,3 @@ ins_right { 'location' }
 lualine.setup(config)
 
 
-

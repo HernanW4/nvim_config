@@ -9,18 +9,48 @@ local check_backspace = function()
 end
 
 
+local WIDE_HEIGHT = 40
+
 -- luasnip setup
 local luasnip = require 'luasnip'
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
+
+
+vim.api.nvim_set_hl(0, "DocumentationNormal", {bg = NONE, fg = "#ffbd4a"})
+
+vim.api.nvim_set_hl(0, "MyNormal", {bg = NONE, fg = "#aaafff"})
+
+vim.api.nvim_set_hl(0, "MyFloatBorder", {bg = NONE, fg = "#988829"})
+
+vim.api.nvim_set_hl(0, "MyCursorLine", {bg = "#988829", fg = "#000000"})
+
 cmp.setup {
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
   },
-  --heere
+  window = {
+      completion =  cmp.config.window.bordered(),
+--          border = 'rounded',
+--          scrollbar = '||',
+--          winhighlight = "Normal:MyNormal,FloatBorder:MyFloatBorder,CursorLine:MyCursorLine",
+     documentation = cmp.config.window.bordered(),
+--      border = 'rounded',
+--      winhighlight = "Normal:DocumentationNormal,FloatBorder:MyFloatBorder",
+--      maxwidth = math.floor((WIDE_HEIGHT * 2) * (vim.o.columns / (WIDE_HEIGHT * 2 * 16 / 9))),
+--      maxheight = math.floor(WIDE_HEIGHT * (WIDE_HEIGHT / vim.o.lines)),
+  },
+
+  formatting = {
+      format = function(entry, vim_item)
+          vim_item.abbr = string.sub(vim_item.abbr, 1, 20)
+          return vim_item
+      end
+  },
+   --heere
    mapping = cmp.mapping.preset.insert {
     ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
     ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
@@ -92,3 +122,7 @@ cmp.setup {
 
   },
   }
+
+
+--Nasty code but for now is to deal with hover menu
+vim.cmd([[hi link NormalFloat Normal]])
