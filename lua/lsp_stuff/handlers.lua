@@ -1,5 +1,19 @@
 local M = {}
 
+local border = "rounded"
+
+--Border colors
+vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=NONE]]
+
+--Deals with the rounding of the hover window for lsp
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or border
+  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
+
+
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
@@ -26,7 +40,7 @@ M.setup = function()
   local config = {
     -- disable virtual text
     virtual_lines = true,
-    virtual_text = true,
+    virtual_text = false,
     -- virtual_text = {
     --   -- spacing = 7,
     --   -- update_in_insert = false,
@@ -51,7 +65,7 @@ M.setup = function()
       style = "minimal",
       border = "rounded",
       -- border = {"▄","▄","▄","█","▀","▀","▀","█"},
-      source = "if_many", -- Or "always"
+      source = "always", -- Or "always"
       header = "",
       prefix = "",
       -- width = 40,
@@ -61,9 +75,12 @@ M.setup = function()
   vim.diagnostic.config(config)
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",
+    border = border,
     -- width = 60,
     -- height = 30,
+
+    winhighlight = "Normal:MyNormal,FloatBorder:MyFloatBorder,CursorLine:MyCursorLine",
+
   })
 
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
@@ -155,5 +172,10 @@ function M.remove_augroup(name)
 end
 
 vim.cmd [[ command! LspToggleAutoFormat execute 'lua require("lsp_stuff.handlers").toggle_format_on_save()' ]]
+
+
+
+
+
 
 return M
