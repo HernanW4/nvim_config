@@ -13,4 +13,5 @@ require('tabline')
 require('options')
 require('transparency')
 require('nvimCmp')
+require('welcome_menu')
 

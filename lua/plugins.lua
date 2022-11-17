@@ -79,6 +79,15 @@ use {
 
 --Rust
 use 'simrat39/rust-tools.nvim'
+
+
+--Neovim Welcoming Menu
+-- Dashboard (start screen)
+  use {
+    'goolord/alpha-nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' },
+  }
+
    if packer_bootstrap then
     require('packer').sync()
   end
