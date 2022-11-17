@@ -2,7 +2,7 @@ vim.opt.shell = '/bin/bash'
 
 require('plugins')
 
-require ('lsp_stuff')
+require('lsp_stuff')
 
 require('markdown')
 require('keymaps')
@@ -14,4 +14,3 @@ require('options')
 require('transparency')
 require('nvimCmp')
 require('welcome_menu')
-
