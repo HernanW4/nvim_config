@@ -8,8 +8,9 @@ local check_backspace = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
 end
 
-
-local WIDE_HEIGHT = 40
+local ELLIPSIS_CHAR = '...'
+local MAX_LABEL_WIDTH = 20
+local MIN_LABEL_WIDTH = 20
 
 -- luasnip setup
 local luasnip = require 'luasnip'
@@ -37,8 +38,12 @@ cmp.setup {
 --          border = 'rounded',
 --          scrollbar = '||',
 --          winhighlight = "Normal:MyNormal,FloatBorder:MyFloatBorder,CursorLine:MyCursorLine",
+--      maxwidth = math.floor((WIDE_HEIGHT * 2) * (vim.o.columns / (WIDE_HEIGHT * 2 * 16 / 9))),
+--      maxheight = math.floor(WIDE_HEIGHT * (WIDE_HEIGHT / vim.o.lines)),
+
+
      documentation = cmp.config.window.bordered(),
---      border = 'rounded',
+      border = 'rounded',
 --      winhighlight = "Normal:DocumentationNormal,FloatBorder:MyFloatBorder",
 --      maxwidth = math.floor((WIDE_HEIGHT * 2) * (vim.o.columns / (WIDE_HEIGHT * 2 * 16 / 9))),
 --      maxheight = math.floor(WIDE_HEIGHT * (WIDE_HEIGHT / vim.o.lines)),
@@ -46,8 +51,17 @@ cmp.setup {
 
   formatting = {
       format = function(entry, vim_item)
-          vim_item.abbr = string.sub(vim_item.abbr, 1, 20)
-          return vim_item
+          --vim_item.abbr = string.sub(vim_item.abbr, 1, 40)
+          --return vim_item
+          local label = vim_item.abbr
+        local truncated_label = vim.fn.strcharpart(label, 0, MAX_LABEL_WIDTH)
+        if truncated_label ~= label then
+          vim_item.abbr = truncated_label .. ELLIPSIS_CHAR
+        elseif string.len(label) < MIN_LABEL_WIDTH then
+          local padding = string.rep(' ', MIN_LABEL_WIDTH - string.len(label))
+          vim_item.abbr = label .. padding
+        end
+        return vim_item
       end
   },
    --heere
