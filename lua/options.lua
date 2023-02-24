@@ -1,85 +1,29 @@
------------------------------------------------------------
--- General Neovim settings and configuration
------------------------------------------------------------
+vim.opt.nu = true
+vim.opt.relativenumber = true
 
--- Default options are not included
--- See: https://neovim.io/doc/user/vim_diff.html
--- [2] Defaults - *nvim-defaults*
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
-local g = vim.g       -- Global variables
-local opt = vim.opt   -- Set options (global/buffer/windows-scoped)
+vim.opt.smartindent = true
 
------------------------------------------------------------
--- General
------------------------------------------------------------
-opt.mouse = 'a'                       -- Enable mouse support
-opt.clipboard = 'unnamedplus'         -- Copy/paste to system clipboard
-opt.swapfile = false                  -- Don't use swapfile
-opt.completeopt = 'menuone,noinsert,noselect'  -- Autocomplete options
+vim.opt.wrap = false
 
------------------------------------------------------------
--- Neovim UI
------------------------------------------------------------
-opt.number = true           -- Show line number
-opt.showmatch = true        -- Highlight matching parenthesis
-opt.foldmethod = 'marker'   -- Enable folding (default 'foldmarker')
---opt.colorcolumn = '80'      -- Line lenght marker at 80 columns
-opt.ignorecase = true       -- Ignore case letters when search
-opt.smartcase = true        -- Ignore lowercase for the whole pattern
-opt.linebreak = true        -- Wrap on word boundary
-opt.termguicolors = true    -- Enable 24-bit RGB colors
-opt.laststatus=3            -- Set global statusline
-opt.splitright = true
-opt.splitbelow = true
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
 
------------------------------------------------------------
--- Tabs, indent
------------------------------------------------------------
-opt.expandtab = true        -- Use spaces instead of tabs
-opt.shiftwidth = 4          -- Shift 4 spaces when tab
-opt.tabstop = 4             -- 1 tab == 4 spaces
-opt.smartindent = true      -- Autoindent new lines
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
 
------------------------------------------------------------
--- Memory, CPU
------------------------------------------------------------
-opt.history = 100           -- Remember N lines in history
-opt.lazyredraw = true       -- Faster scrolling
-opt.synmaxcol = 240         -- Max column for syntax highlight
+vim.opt.termguicolors = true
 
---Update time to make it shorter so no significant delay can be seen
-opt.updatetime = 300
-opt.cmdheight = 2
+vim.opt.scrolloff = 15
+vim.opt.signcolumn = "yes"
+vim.opt.isfname:append("@-@")
 
+vim.opt.updatetime = 50
 
------------------------------------------------------------
--- Startup
------------------------------------------------------------
--- Disable nvim intro
-opt.shortmess:append "sI"
-
--- Disable builtins plugins
-local disabled_built_ins = {
-  "netrw",
-  "netrwPlugin",
-  "netrwSettings",
-  "netrwFileHandlers",
-  "gzip",
-  "zip",
-  "zipPlugin",
-  "tar",
-  "tarPlugin",
-  "getscript",
-  "getscriptPlugin",
-  "vimball",
-  "vimballPlugin",
-  "2html_plugin",
-  "logipat",
-  "rrhelper",
-  "spellfile_plugin",
-  "matchit"
-}
-
-for _, plugin in pairs(disabled_built_ins) do
-  g["loaded_" .. plugin] = 1
-end
+vim.opt.colorcolumn = "80"

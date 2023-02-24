@@ -1,10 +1,15 @@
-local fn = vim.fn
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-    packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
-        install_path })
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
 end
 
+local packer_bootstrap = ensure_packer()
 
 -- Autocommand that reloads neovim whenever you save the packer_init.lua file
 vim.cmd [[
@@ -14,88 +19,90 @@ vim.cmd [[
   augroup end
 ]]
 
+
 return require('packer').startup(function(use)
-    -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
+  use 'wbthomason/packer.nvim'
 
-
-    --Smart Pairs
-    --
-    use 'gosukiwi/vim-smartpairs'
-
-
-    --use 'kamykn/popup-menu.nvim'
-
-    -- Mark down
-    -- install without yarn or npm
-
-    use "iamcco/markdown-preview.nvim"
-
-    --Color theme
-    use 'Mofiqul/dracula.nvim'
-    use 'EdenEast/nightfox.nvim' -- Packer
-    use 'morhetz/gruvbox'
-    use 'joshdick/onedark.vim'
-    use 'sainnhe/sonokai'
-
-    --Status Line
-    --
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-    }
-
-    use 'nvim-tree/nvim-web-devicons'
-
-    --Tabline
-    use {
-        'romgrk/barbar.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons' }
-    }
-
-    --Transparent
-    use 'xiyaowong/nvim-transparent'
-
-    --Nvim-tree
-    use {
-        'nvim-tree/nvim-tree.lua',
-        requires = {
-            'nvim-tree/nvim-web-devicons', -- optional, for file icons
-        },
-        tag = 'nightly' -- optional, updated every week. (see issue #1193)
-    }
-
-
-    --NvimCmp and LuaSnip
-    --
-    use 'neovim/nvim-lspconfig'
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/cmp-cmdline'
-    use 'hrsh7th/nvim-cmp'
-
-    use 'L3MON4D3/LuaSnip'
-    use 'saadparwaiz1/cmp_luasnip'
-
-    --Lsp Stuff
-    use {
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
-    }
-
-    --Rust
-    use 'simrat39/rust-tools.nvim'
-
-
-    --Neovim Welcoming Menu
+     --Neovim Welcoming Menu
     -- Dashboard (start screen)
     use {
         'goolord/alpha-nvim',
         requires = { 'kyazdani42/nvim-web-devicons' },
     }
 
-    if packer_bootstrap then
-        require('packer').sync()
+
+  --Tmux
+ use({
+    "aserowy/tmux.nvim",
+    config = function() return require("tmux").setup() end
+}) 
+
+ --Status Line
+    --
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
+
+
+  --Lsp config
+  use {
+  'VonHeikemen/lsp-zero.nvim',
+  branch = 'v1.x',
+  requires = {
+    -- LSP Support
+    {'neovim/nvim-lspconfig'},             -- Required
+    {'williamboman/mason.nvim'},           -- Optional
+    {'williamboman/mason-lspconfig.nvim'}, -- Optional
+
+    -- Autocompletion
+    {'hrsh7th/nvim-cmp'},         -- Required
+    {'hrsh7th/cmp-nvim-lsp'},     -- Required
+    {'hrsh7th/cmp-buffer'},       -- Optional
+    {'hrsh7th/cmp-path'},         -- Optional
+    {'saadparwaiz1/cmp_luasnip'}, -- Optional
+    {'hrsh7th/cmp-nvim-lua'},     -- Optional
+
+    -- Snippets
+    {'L3MON4D3/LuaSnip'},             -- Required
+    {'rafamadriz/friendly-snippets'}, -- Optional
+  }
+}
+
+  --UndoTree
+use "mbbill/undotree"
+
+  --Treesitter
+      use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            ts_update()
+        end,
+    }
+
+  --Colorscheme
+  use({
+    'rose-pine/neovim',
+    as = 'rose-pine',
+    config = function()
+        require("rose-pine").setup()
+        vim.cmd('colorscheme rose-pine')
     end
+})
+
+
+  --Telescope
+  use {
+  'nvim-telescope/telescope.nvim', tag = '0.1.1',
+-- or                            , branch = '0.1.x',
+  requires = { {'nvim-lua/plenary.nvim'} }
+}
+
+  -- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+
+  if packer_bootstrap then
+    require('packer').sync()
+  end
 end)
