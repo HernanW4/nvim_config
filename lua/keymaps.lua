@@ -10,6 +10,7 @@ function _G.reload_nvim_conf()
 end
 
 
+
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
 vim.g.mapleader = ' ' --Sets space as vim.keymap.set leader
 
@@ -86,5 +87,12 @@ vim.keymap.set('n', '<C-s>', '<Plug>MarkdownPreviewStop')
 
 --Reload lua config
 vim.keymap.set("n", "<leader>r", "<cmd>lua reload_nvim_conf()<CR>", { noremap = true, silent = false })
+
+
+--Autocompletion stuff
+vim.keymap.set("i", "(" ,"()<Esc>i", {noremap = true})
+vim.keymap.set("i", "[" ,"[]<Esc>i", {noremap = true})
+vim.keymap.set("i", "\"" ,"\"\"<Esc>i", {noremap = true})
+vim.keymap.set("i", "{" ,"{}<Esc>i", {noremap = true})
 
 

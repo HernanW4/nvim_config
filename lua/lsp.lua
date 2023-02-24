@@ -19,14 +19,33 @@ lsp.configure('lua-language-server', {
 })
 
 
+
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
+  ['<C-K>'] = cmp.mapping.scroll_docs(-3),
+  ['<C-J>'] = cmp.mapping.scroll_docs(3),
   ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
   ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
   ['<C-y>'] = cmp.mapping.confirm({ select = true }),
   ["<C-Space>"] = cmp.mapping.complete(),
 })
+
+cmp.setup {
+ window = {
+      completion =  cmp.config.window.bordered(),
+          border = 'rounded',
+--          winhighlight = "Normal:MyNormal,FloatBorder:MyFloatBorder,CursorLine:MyCursorLine",
+--      maxwidth = math.floor((WIDE_HEIGHT * 2) * (vim.o.columns / (WIDE_HEIGHT * 2 * 16 / 9))),
+--      maxheight = math.floor(WIDE_HEIGHT * (WIDE_HEIGHT / vim.o.lines)),
+
+
+     documentation = cmp.config.window.bordered(),
+--      winhighlight = "Normal:DocumentationNormal,FloatBorder:MyFloatBorder",
+--      maxwidth = math.floor((WIDE_HEIGHT * 2) * (vim.o.columns / (WIDE_HEIGHT * 2 * 16 / 9))),
+--      maxheight = math.floor(WIDE_HEIGHT * (WIDE_HEIGHT / vim.o.lines)),
+  },
+  }
 
 
 --cmp_mappings['<Tab>'] = nil

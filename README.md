@@ -1,8 +1,12 @@
 # TODO
 
-[] Add markdown preview
+[X] Add markdown preview
+1. [] Fix markdown preview
 
-[] Find some kind of file navigation, to open projects and what not
+[X] Find some kind of file navigation, to open projects and what not
 
-[] Change nvim cmp style
+[X] Change nvim-cmp style
+
+[X] Add rustfmt plugin
+
 

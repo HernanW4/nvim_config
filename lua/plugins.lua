@@ -12,18 +12,32 @@ end
 local packer_bootstrap = ensure_packer()
 
 -- Autocommand that reloads neovim whenever you save the packer_init.lua file
-vim.cmd [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]]
+--vim.cmd [[
+--  augroup packer_user_config
+--    autocmd!
+--    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+--  augroup end
+--]]
 
 
 return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
+    -- install without yarn or npm
+use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+})
 
+use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+    --Rust fmt
+    use "alx741/vim-rustfmt"
+
+    --To navigate to directories much easier
+    use 'nvim-lua/popup.nvim'
+use 'nvim-lua/plenary.nvim'
+use 'jvgrootveld/telescope-zoxide'
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
      --Neovim Welcoming Menu
+     --
     -- Dashboard (start screen)
     use {
         'goolord/alpha-nvim',
