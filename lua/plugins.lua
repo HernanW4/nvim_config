@@ -21,6 +21,13 @@ local packer_bootstrap = ensure_packer()
 
 
 return require('packer').startup(function(use)
+    --Harpoon
+    use 'nvim-lua/plenary.nvim' 
+
+    use 'ThePrimeagen/harpoon'
+
+
+
     -- install without yarn or npm
 use({
     "iamcco/markdown-preview.nvim",
