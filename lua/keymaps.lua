@@ -62,6 +62,7 @@ vim.keymap.set('i', '<up>', '<nop>')
 vim.keymap.set('i', '<down>', '<nop>')
 vim.keymap.set('i', '<left>', '<nop>')
 vim.keymap.set('', '<right>', '<nop>')
+vim.keymap.set('', '<tab>', '<nop>')
 
 
 -- Change split orientation

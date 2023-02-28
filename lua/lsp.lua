@@ -1,5 +1,27 @@
 local lsp = require("lsp-zero")
 
+local ELLIPSIS_CHAR = '…'
+local MAX_LABEL_WIDTH = 25
+local MAX_KIND_WIDTH = 14
+
+local get_ws = function (max, len)
+  return (" "):rep(max - len)
+end
+
+local format = function(_, item)
+  local content = item.abbr
+  -- local kind_symbol = symbols[item.kind]
+  -- item.kind = kind_symbol .. get_ws(MAX_KIND_WIDTH, #kind_symbol)
+
+  if #content > MAX_LABEL_WIDTH then
+    item.abbr = vim.fn.strcharpart(content, 0, MAX_LABEL_WIDTH) .. ELLIPSIS_CHAR
+  else
+    item.abbr = content .. get_ws(MAX_LABEL_WIDTH, #content)
+  end
+
+  return item
+end
+
 lsp.preset("recommended")
 
 lsp.ensure_installed({
@@ -32,24 +54,31 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 })
 
 cmp.setup {
+    formatting = {
+        format = function(_, vim_item)
+            vim_item.menu = ""
+            vim_item.kind = ""
+            return vim_item
+        end
+    },
  window = {
       completion =  cmp.config.window.bordered(),
           border = 'rounded',
 --          winhighlight = "Normal:MyNormal,FloatBorder:MyFloatBorder,CursorLine:MyCursorLine",
---      maxwidth = math.floor((WIDE_HEIGHT * 2) * (vim.o.columns / (WIDE_HEIGHT * 2 * 16 / 9))),
---      maxheight = math.floor(WIDE_HEIGHT * (WIDE_HEIGHT / vim.o.lines)),
+     -- maxwidth = math.floor((MAX_KIND_WIDTH * 2) * (vim.o.columns / (MAX_KIND_WIDTH * 2 * 16 / 9))),
+     -- maxheight = math.floor(MAX_KIND_WIDTH * (MAX_KIND_WIDTH / vim.o.lines)),
 
 
      documentation = cmp.config.window.bordered(),
 --      winhighlight = "Normal:DocumentationNormal,FloatBorder:MyFloatBorder",
---      maxwidth = math.floor((WIDE_HEIGHT * 2) * (vim.o.columns / (WIDE_HEIGHT * 2 * 16 / 9))),
---      maxheight = math.floor(WIDE_HEIGHT * (WIDE_HEIGHT / vim.o.lines)),
+     -- maxwidth = math.floor((MAX_KIND_WIDTH * 2) * (vim.o.columns / (MAX_KIND_WIDTH * 2 * 16 / 9))),
+     -- maxheight = math.floor(MAX_KIND_WIDTH * (MAX_KIND_WIDTH / vim.o.lines)),
   },
   }
 
 
---cmp_mappings['<Tab>'] = nil
---cmp_mappings['<S-Tab>'] = nil
+cmp_mappings['<Tab>'] = nil
+cmp_mappings['<S-Tab>'] = nil
 
 lsp.setup_nvim_cmp({
   mapping = cmp_mappings
@@ -83,6 +112,7 @@ end)
 lsp.setup()
 
 vim.diagnostic.config({
+    manage_nvim_cmp = true,
     virtual_text = true
 })
 
