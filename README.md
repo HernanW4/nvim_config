@@ -1,6 +1,12 @@
-### Markdown Preview Installation
+# TODO
 
-My config file does have markdown support. In order to use Markdown Preview you specific package must be installed. 
+[X] Add markdown preview
+1. [X] Fix markdown preview
 
-For how run Markdown Preview please check their github (https://github.com/iamcco/markdown-preview.nvim)
+[X] Find some kind of file navigation, to open projects and what not
+
+[X] Change nvim-cmp style
+
+[X] Add rustfmt plugin
+
 
