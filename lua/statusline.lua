@@ -219,5 +219,3 @@ ins_right {
 ins_right { 'location' }
 -- Now don't forget to initialize lualine
 lualine.setup(config)
-
-

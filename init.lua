@@ -1,17 +1,10 @@
-vim.opt.shell = '/bin/bash'
+require 'plugins'
 
-require('plugins')
-
-require ('lsp_stuff')
-
-require('markdown')
-require('keymaps')
-require('statusline')
-require('colorscheme')
-require('ntree')
-require('tabline')
-require('options')
-require('transparency')
-require('nvimCmp')
-require('welcome_menu')
-
+require 'keymaps'
+require 'telescopee'
+require 'treesitter'
+require 'colorscheme'
+require 'lsp'
+require 'options'
+require 'statusline'
+require 'welcome_screen'
