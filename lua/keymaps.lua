@@ -98,8 +98,6 @@ vim.keymap.set("i", "{" ,"{}<Esc>i", {noremap = true})
 
 
 --Harpoon
-local harpoon = require('harpoon.ui')
-
 
 vim.keymap.set("n", "<C-m>" ,":lua require(\"harpoon.ui\").toggle_quick_menu()<CR>", {noremap = true, silent = true})
 vim.keymap.set("n", "<C-a>" ,":lua require(\"harpoon.mark\").add_file()<CR>", {noremap = true, silent = true})
