@@ -22,6 +22,10 @@ local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
 
+    --Toggle Term 
+    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+  require("toggleterm").setup()
+end}
 
     --Harpoon
     use 'nvim-lua/plenary.nvim' 
