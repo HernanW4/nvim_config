@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 toggleterm.setup {
-  size = 60, --The size to which the new terminal will be open
+  size = 65, --The size to which the new terminal will be open
   open_mapping = [[<C-\>]], --Open terminal
   hide_numbers = true,
   shade_filetypes = {},
@@ -13,7 +13,7 @@ toggleterm.setup {
   start_in_insert = true,
   insert_mappings = true,
   persist_size = true,
-  direction = "vertical", --Type of opening the new terminal, vertical, horizontal, or float
+  direction = "float", --Type of opening the new terminal, vertical, horizontal, or float
   close_on_exit = true,
   shell = vim.o.shell,
   float_opts = {
@@ -86,7 +86,7 @@ function _PYTHON_TOGGLE()
   python:toggle()
 end
 
-local cargo_run = Terminal:new { cmd = "cargo run", hidden = true } --You have to have cargo run
+local cargo_run = Terminal:new { cmd = "clear && cargo run", hidden = true } --You have to have cargo run
 
 function _CARGO_RUN()
   cargo_run:toggle()
@@ -102,7 +102,7 @@ end
 
 
 vim.api.nvim_set_keymap("n", "<A-g>", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("i", "<A-r>", "<cmd>lua _CARGO_RUN()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<A-r>", "<cmd>lua _CARGO_RUN()<CR>", { noremap = true, silent = true })
 
 
 --vim.api.nvim_set_keymap("n", "<m-3>", "<cmd>lua _HORIZONTAL_TERM()<CR>", { noremap = true, silent = true })
