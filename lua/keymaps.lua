@@ -107,3 +107,7 @@ vim.keymap.set("i", "{" ,"{}<Esc>i", {noremap = true})
 vim.keymap.set("n", "<C-e>" ,":lua require(\"harpoon.ui\").toggle_quick_menu()<CR>", {noremap = true, silent = true})
 vim.keymap.set("n", "<leader>a" ,":lua require(\"harpoon.mark\").add_file()<CR>", {noremap = true, silent = true})
 
+
+--Git Fugitive
+--
+vim.keymap.set("n", "<leader>gs", ":G<CR>", {noremap = true, silent = true})
