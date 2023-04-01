@@ -17,7 +17,8 @@ vim.g.mapleader = ' ' --Sets space as vim.keymap.set leader
 
 --GODLY
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+--vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
 
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -53,7 +54,7 @@ vim.keymap.set('n', '<leader>u', ':UndotreeToggle<CR>')
 vim.keymap.set('', '<left>', ':tabp<CR>')
 vim.keymap.set('', '<right>', ':tabn<CR>')
 
--- Disable arrow keys
+-- Disable keys
 vim.keymap.set('', '<up>', '<nop>')
 vim.keymap.set('', '<down>', '<nop>')
 vim.keymap.set('', '<left>', '<nop>')
@@ -63,6 +64,10 @@ vim.keymap.set('i', '<down>', '<nop>')
 vim.keymap.set('i', '<left>', '<nop>')
 vim.keymap.set('', '<right>', '<nop>')
 vim.keymap.set('', '<tab>', '<nop>')
+
+
+vim.keymap.set('', '<C-m>', '<nop>')
+
 
 
 -- Change split orientation
@@ -80,8 +85,8 @@ vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')                    -- exit
 
 
 
-vim.keymap.set('n', '<C-m>', '<Plug>MarkdownPreview')
-vim.keymap.set('n', '<C-s>', '<Plug>MarkdownPreviewStop')
+--vim.keymap.set('n', '<C-m>', '<Plug>MarkdownPreview')
+--vim.keymap.set('n', '<C-s>', '<Plug>MarkdownPreviewStop')
 --nmap <M-s> <Plug>MarkdownPreviewStop
 --nmap <C-p> <Plug>MarkdownPreviewToggle
 
@@ -99,6 +104,6 @@ vim.keymap.set("i", "{" ,"{}<Esc>i", {noremap = true})
 
 --Harpoon
 
-vim.keymap.set("n", "<C-m>" ,":lua require(\"harpoon.ui\").toggle_quick_menu()<CR>", {noremap = true, silent = true})
-vim.keymap.set("n", "<C-a>" ,":lua require(\"harpoon.mark\").add_file()<CR>", {noremap = true, silent = true})
+vim.keymap.set("n", "<C-e>" ,":lua require(\"harpoon.ui\").toggle_quick_menu()<CR>", {noremap = true, silent = true})
+vim.keymap.set("n", "<leader>a" ,":lua require(\"harpoon.mark\").add_file()<CR>", {noremap = true, silent = true})
 

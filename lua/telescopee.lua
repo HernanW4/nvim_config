@@ -9,4 +9,4 @@ vim.keymap.set('n', '<leader>h', builtin.help_tags, {})
 require('telescope').load_extension('fzf')
 
 
-vim.keymap.set("n", "<leader>cd", require("telescope").extensions.zoxide.list)
+--vim.keymap.set("n", "<leader>cd", require("telescope").extensions.zoxide.list)

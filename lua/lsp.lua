@@ -1,8 +1,7 @@
 local lsp = require("lsp-zero")
+vim.o.completeopt = "menuone,noselect,preview"
 
-local ELLIPSIS_CHAR = '…'
 local MAX_LABEL_WIDTH = 25
-local MAX_KIND_WIDTH = 14
 
 local get_ws = function (max, len)
   return (" "):rep(max - len)
@@ -41,10 +40,10 @@ lsp.configure('lua-language-server', {
 })
 
 
-
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
+    ['<CR>'] = cmp.config.disable,
   ['<C-K>'] = cmp.mapping.scroll_docs(-3),
   ['<C-J>'] = cmp.mapping.scroll_docs(3),
   ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
@@ -54,6 +53,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 })
 
 cmp.setup {
+    preselect = cmp.PreselectMode.None,
     formatting = {
         format = function(_, vim_item)
             vim_item.menu = ""

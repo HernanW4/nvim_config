@@ -27,6 +27,10 @@ return require('packer').startup(function(use)
   require("toggleterm").setup()
 end}
 
+
+    --Fugitive
+    use 'tpope/vim-fugitive'
+
     --Harpoon
     use 'nvim-lua/plenary.nvim' 
 

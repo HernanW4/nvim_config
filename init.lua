@@ -1,6 +1,6 @@
 require 'plugins'
-
 require 'keymaps'
+
 require 'telescopee'
 require 'treesitter'
 require 'colorscheme'
