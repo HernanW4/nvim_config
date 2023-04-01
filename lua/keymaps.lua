@@ -10,6 +10,7 @@ function _G.reload_nvim_conf()
 end
 
 
+vim.keymap.set('n', '<leader>cd', ':Ex<CR>')
 
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
 vim.g.mapleader = ' ' --Sets space as vim.keymap.set leader

@@ -1,11 +1,4 @@
 require 'plugins'
-require 'keymaps'
 
-require 'telescopee'
-require 'treesitter'
-require 'colorscheme'
-require 'lsp'
+require 'keymaps'
 require 'options'
-require 'statusline'
-require 'welcome_screen'
-require 'term'
