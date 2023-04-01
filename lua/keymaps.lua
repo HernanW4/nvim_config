@@ -110,3 +110,4 @@ vim.keymap.set("n", "<leader>a" ,":lua require(\"harpoon.mark\").add_file()<CR>"
 --Git Fugitive
 --
 vim.keymap.set("n", "<leader>gs", ":G<CR>", {noremap = true, silent = true})
+vim.keymap.set("n", "<leader>gp", ":Git push<CR>", {noremap = true, silent = true})
