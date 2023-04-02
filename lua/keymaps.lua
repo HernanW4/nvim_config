@@ -10,7 +10,7 @@ function _G.reload_nvim_conf()
 end
 
 
-vim.keymap.set('n', '<leader>cd', ':Ex<CR>')
+
 
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
 vim.g.mapleader = ' ' --Sets space as vim.keymap.set leader
@@ -106,6 +106,8 @@ vim.keymap.set("i", "{" ,"{}<Esc>i", {noremap = true})
 
 vim.keymap.set("n", "<C-e>" ,":lua require(\"harpoon.ui\").toggle_quick_menu()<CR>", {noremap = true, silent = true})
 vim.keymap.set("n", "<leader>a" ,":lua require(\"harpoon.mark\").add_file()<CR>", {noremap = true, silent = true})
+vim.keymap.set("n", "<C-n>" ,":lua require(\"harpoon.mark\").nav_next()<CR>", {noremap = true, silent = true})
+
 
 
 --Git Fugitive
@@ -115,3 +117,6 @@ vim.keymap.set("n", "<leader>gp", ":Git push<CR>", {noremap = true, silent = tru
 
 vim.keymap.set("n", "gu", "<cmd> diffget //2<CR>", {noremap = true, silent = true})
 vim.keymap.set("n", "gh", "<cmd> diffget //3<CR>", {noremap = true, silent = true})
+
+
+vim.keymap.set('n', '<leader>cd', ':Ex<cr>')
