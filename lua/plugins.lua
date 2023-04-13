@@ -11,7 +11,7 @@ end
 
 local packer_bootstrap = ensure_packer()
 
--- Autocommand that reloads neovim whenever you save the packer_init.lua file
+--Autocommand that reloads neovim whenever you save the packer_init.lua file
 --vim.cmd [[
 --  augroup packer_user_config
 --    autocmd!
@@ -22,6 +22,14 @@ local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
 
+    --Toggle Term 
+    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+  require("toggleterm").setup()
+end}
+
+
+    --Fugitive
+    use 'tpope/vim-fugitive'
 
     --Harpoon
     use 'nvim-lua/plenary.nvim' 
