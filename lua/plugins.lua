@@ -9,71 +9,44 @@ local ensure_packer = function()
   return false
 end
 
+
+
+-- Autocommand that reloads neovim whenever you save the plugins.lua file
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]])
+
 local packer_bootstrap = ensure_packer()
 
---Autocommand that reloads neovim whenever you save the packer_init.lua file
---vim.cmd [[
---  augroup packer_user_config
---    autocmd!
---    autocmd BufWritePost plugins.lua source <afile> | PackerSync
---  augroup end
---]]
-
-
 return require('packer').startup(function(use)
+  use 'wbthomason/packer.nvim'
+  -- My plugins here
+  -- use 'foo1/bar1.nvim'
+  -- use 'foo2/bar2.nvim'
+  --
+  use { "catppuccin/nvim", as = "catppuccin" }
 
-    --Toggle Term 
-    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
-  require("toggleterm").setup()
-end}
+  use { "ellisonleao/gruvbox.nvim" }
 
+  --Lualine
+  use {
+  'nvim-lualine/lualine.nvim',
+  requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+}
 
-    --Fugitive
-    use 'tpope/vim-fugitive'
-
-    --Harpoon
-    use 'nvim-lua/plenary.nvim' 
-
-    use 'ThePrimeagen/harpoon'
-
-
-
-    -- install without yarn or npm
-use({
-    "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
-})
-
-use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
-    --Rust fmt
-    use "alx741/vim-rustfmt"
-
-    --To navigate to directories much easier
-    use 'nvim-lua/popup.nvim'
-use 'nvim-lua/plenary.nvim'
-use 'jvgrootveld/telescope-zoxide'
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
-     --Neovim Welcoming Menu
-     --
-    -- Dashboard (start screen)
-    use {
-        'goolord/alpha-nvim',
-        requires = { 'kyazdani42/nvim-web-devicons' },
-    }
-
-
-  --Tmux
+--Tmux
  use({
     "aserowy/tmux.nvim",
     config = function() return require("tmux").setup() end
 }) 
 
- --Status Line
-    --
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-    }
+use 'arkav/lualine-lsp-progress'
+
+use 'sainnhe/gruvbox-material'
+
 
 
   --Lsp config
@@ -112,28 +85,30 @@ use "mbbill/undotree"
         end,
     }
 
-  --Colorscheme
-  use({
-    'rose-pine/neovim',
-    as = 'rose-pine',
-    config = function()
-        require("rose-pine").setup()
-        vim.cmd('colorscheme rose-pine')
-    end
-})
+    use 'ThePrimeagen/harpoon'
+
+
 
 
   --Telescope
-  use {
-  'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    --To navigate to directories much easier
+    -- init.lua:
+    use {
+  'nvim-telescope/telescope.nvim', tag = '0.1.2',
 -- or                            , branch = '0.1.x',
   requires = { {'nvim-lua/plenary.nvim'} }
 }
+    use 'nvim-lua/popup.nvim'
+use 'nvim-lua/plenary.nvim'
+use 'jvgrootveld/telescope-zoxide'
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
-
   if packer_bootstrap then
     require('packer').sync()
   end
+
 end)
+

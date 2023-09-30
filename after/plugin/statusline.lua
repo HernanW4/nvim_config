@@ -4,6 +4,7 @@
 local lualine = require('lualine')
 
 
+
 -- Color table for highlights
 -- stylua: ignore
 local colors = {
@@ -56,7 +57,7 @@ local config = {
     lualine_z = {},
     -- These will be filled later
     lualine_c = {},
-    lualine_x = {},
+    lualine_x = {'lsp_progress'},
   },
   inactive_sections = {
     -- these are to remove the defaults
@@ -81,7 +82,7 @@ end
 
 ins_left {
   function()
-    return '▊'
+    return ' ▊'
   end,
   color = { fg = colors.blue }, -- Sets highlighting of component
   padding = { left = 0, right = 1 }, -- We don't need space before this
@@ -147,7 +148,7 @@ ins_left {
 ins_left {
   'diagnostics',
   sources = { 'nvim_diagnostic' },
-  symbols = { error = ' ', warn = ' ', info = ' ' },
+  symbols = { error = ' ', warn = ' ', info = '' },
   diagnostics_color = {
     color_error = { fg = colors.red },
     color_warn = { fg = colors.orange },
@@ -162,6 +163,7 @@ ins_left {
     return '%='
   end,
 }
+
 -- Add components to right sections
 ins_right {
   'o:encoding', -- option component same as &encoding in viml
@@ -189,7 +191,7 @@ ins_right {
 ins_right {
   'diff',
   -- Is it me or the symbol for modified us really weird
-  symbols = { added = ' ', modified = '柳 ', removed = ' ' },
+  symbols = { added = ' ', modified = '柳', removed = ' ' },
   diff_color = {
     added = { fg = colors.blue },
     modified = { fg = colors.orange },

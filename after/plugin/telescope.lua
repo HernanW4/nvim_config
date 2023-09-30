@@ -6,5 +6,3 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 
 require('telescope').load_extension('fzf')
-
-
