@@ -45,7 +45,8 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 --vim.keymap.set("n", "<leader>pv", vim.cmdEx)
-vim.keymap.set('n', '<leader>w', ':w<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>q', '<cmd>q<cr>')
+vim.keymap.set('n', '<leader>w', '<cmd>w<cr>')
 
 
 vim.keymap.set('n', '<leader>u', ':UndotreeToggle<CR>')
@@ -76,7 +77,7 @@ vim.keymap.set('n', '<leader>th', '<C-w>t<C-w>H') -- change horizontal to vertic
 
 
 -- Close all windows and exit from Neovim with <leader> and q
-vim.keymap.set('n', '<leader>q', ':qa!<CR>')
+--vim.keymap.set('n', '<leader>q', ':qa!<CR>')
 
 
 -- Terminal mappings
@@ -104,7 +105,7 @@ vim.keymap.set("i", "{" ,"{}<Esc>i", {noremap = true})
 
 --Harpoon
 
-vim.keymap.set("n", "<C-e>" ,":lua require(\"harpoon.ui\").toggle_quick_menu()<CR>", {noremap = true, silent = true})
+vim.keymap.set("n", "<leader>e" ,":lua require(\"harpoon.ui\").toggle_quick_menu()<CR>", {noremap = true, silent = true})
 vim.keymap.set("n", "<leader>a" ,":lua require(\"harpoon.mark\").add_file()<CR>", {noremap = true, silent = true})
 vim.keymap.set("n", "<C-n>" ,":lua require(\"harpoon.mark\").nav_next()<CR>", {noremap = true, silent = true})
 

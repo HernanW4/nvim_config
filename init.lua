@@ -1,5 +1,3 @@
-require 'plugins'
-require 'keymaps'
-require 'options'
-require 'luasnip_config'
-
+require('plugin')
+require('keymaps')
+require('options')
