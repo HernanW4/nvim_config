@@ -25,24 +25,18 @@ local function key_maps(bufnr)
     -- Mappings.
     local opts = { buffer = bufnr, noremap = true, silent = true }
 
-    local maps = {
-        ["<leader>l"] = {
-            name = "Lsp",
-            a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
-            d = { "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>", "Definition" },
-            D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration" },
-            i = { "<cmd>lua require('telescope.builtin').lsp_implementations()<CR>", "Implementation" },
-            k = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
-            h = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Help" },
-            n = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
-            r = { "<cmd>lua require('telescope.builtin').lsp_references()<CR>", "References" },
-            l = { "<cmd>lua vim.diagnostic.open_float({scope = 'line'})<CR>", "Show Diagnostics" },
-        },
-        ["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Prev Diagnostics" },
-        ["]d"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next Diagnostics" }
-    }
+        --
+      vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+      vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+      vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+      vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+      vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
+      vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+      vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
+      vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
+      vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+      vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 
-    require("which-key").register(maps, opts);
 end
 
 local function documentHighlight(client, bufnr)
@@ -75,6 +69,7 @@ end
 function common_config.common_on_attach(client, bufnr)
     key_maps(bufnr)
     local lsp_hover_augroup = vim.api.nvim_create_augroup("config_lsp_hover", { clear = false })
+    client.server_capabilities.semnticTokensProvicer = nil
     vim.api.nvim_clear_autocmds({
         buffer = bufnr,
         group = lsp_hover_augroup

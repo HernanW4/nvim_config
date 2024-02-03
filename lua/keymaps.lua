@@ -70,6 +70,10 @@ vim.keymap.set('', '<tab>', '<nop>')
 vim.keymap.set('', '<C-m>', '<nop>')
 
 
+--Noice
+vim.keymap.set('n', '<leader>nn', ':silent Noice dismiss<CR>')
+
+
 
 -- Change split orientation
 vim.keymap.set('n', '<leader>tk', '<C-w>t<C-w>K') -- change vertical to horizontal

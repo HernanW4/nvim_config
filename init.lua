@@ -1,3 +1,7 @@
+package.path = package.path .. ";/home/walter-arch/.dotfiles/.config/nvim/after/?.lua"
+
+
+vim.opt.runtimepath:append("~/.dotfiles/.config/nvim/after")
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({

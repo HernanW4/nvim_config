@@ -1,4 +1,5 @@
 require("lazy").setup({
+    {"simrat39/rust-tools.nvim"},
 
     {
         "Shatur/neovim-ayu", 
