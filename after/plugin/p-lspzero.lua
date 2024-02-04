@@ -112,7 +112,7 @@ end
 -- Diagnostics config
 vim.diagnostic.config({
     underline = true,
-    virtual_text = false,
+    virtual_text = true,
     signs = true,
     update_in_insert = false,
     float = {
@@ -194,6 +194,26 @@ require("lspconfig").html.setup {
 require("lspconfig").tsserver.setup {
     on_attach = common_config.common_on_attach,
     capabilities = common_config.capabilities
+}
+
+local util = require('lspconfig').util
+
+require('lspconfig').pyright.setup{
+    on_attach = common_config.common_on_attach,
+    flags = { debounce_text_changes = 150 },
+
+    --root_dir = util.root_pattern('.venv', 'venv', 'pyrightconfig.json'),
+    settings = {
+      pyright = { disableLanguageServices = false, disableOrganizeImports = true },
+      python = {
+        analysis = {
+          useLibraryCodeForTypes = true,
+          diagnosticMode = 'workspace',
+          venvPath = 'venv',
+          configFile = "pyproject.toml"
+        },
+      },
+    },
 }
 
 return common_config
