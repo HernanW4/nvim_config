@@ -92,9 +92,19 @@ require("lazy").setup({
 	-- local plugins need to be explicitly configured with dir
 	{ dir = "~/projects/secret.nvim" },
 
+	{
+		"rcarriga/nvim-notify",
+		config = function()
+			require("notify").setup({
+				background_colour = "#000000",
+			})
+		end,
+	},
+
 	-- lazy.nvim
 	{
 		"folke/noice.nvim",
+
 		event = "VeryLazy",
 		opts = {
 			-- add any options here
@@ -105,7 +115,6 @@ require("lazy").setup({
 			-- OPTIONAL:
 			--   `nvim-notify` is only needed, if you want to use the notification view.
 			--   If not available, we use `mini` as the fallback
-			"rcarriga/nvim-notify",
 		},
 	},
 
