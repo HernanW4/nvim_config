@@ -13,7 +13,11 @@ require("lazy").setup({
 		end,
 	},
 
-	{ "simrat39/rust-tools.nvim" },
+	{
+		"mrcjkb/rustaceanvim",
+		version = "^4", -- Recommended
+		ft = { "rust" },
+	},
 
 	{
 		"Shatur/neovim-ayu",
@@ -94,11 +98,11 @@ require("lazy").setup({
 
 	{
 		"rcarriga/nvim-notify",
-		config = function()
-			require("notify").setup({
-				background_colour = "#000000",
-			})
-		end,
+		--config = function()
+		--	require("notify").setup({
+		--		background_colour = "#000000",
+		--	})
+		--end,
 	},
 
 	-- lazy.nvim
